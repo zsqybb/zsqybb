@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL 数据助手 - 国服版</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-icon">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <h1 class="logo-text">LOL<span>助手</span></h1>
+            <p class="logo-sub">国服数据查询</p>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item active" data-tab="self-info">
+                <i class="fas fa-user-circle"></i>
+                <span>个人信息</span>
+            </li>
+            <li class="nav-item" data-tab="search-player">
+                <i class="fas fa-search"></i>
+                <span>查询他人</span>
+            </li>
+            <li class="nav-item" data-tab="champion-list">
+                <i class="fas fa-crown"></i>
+                <span>英雄图鉴</span>
+            </li>
+            <li class="nav-item" data-tab="settings">
+                <i class="fas fa-cog"></i>
+                <span>设置</span>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="lcu-status" id="lcuStatus">
+                <span class="status-dot offline"></span>
+                <span>客户端未连接</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 顶部栏 -->
+        <header class="top-bar">
+            <h2 id="pageTitle" class="page-title">个人信息</h2>
+            <div class="top-actions">
+                <span class="api-status" id="apiStatus">
+                    <i class="fas fa-circle"></i> API 就绪
+                </span>
+            </div>
+        </header>
+
+        <!-- ========== 个人信息 ========== -->
+        <section id="self-info" class="tab-content active">
+            <div class="section-grid">
+                <!-- LCU读取卡片 -->
+                <div class="card card-lcu">
+                    <div class="card-header">
+                        <h3><i class="fas fa-desktop"></i> 从客户端读取</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="hint-text">启动英雄联盟客户端后，点击按钮自动读取你的账号信息</p>
+                        <button class="btn btn-primary btn-lg" id="btnLcuRead">
+                            <i class="fas fa-download"></i> 从客户端读取
+                        </button>
+                        <button class="btn btn-outline" id="btnLcuConnect">
+                            <i class="fas fa-plug"></i> 重新连接
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 手动输入卡片 -->
+                <div class="card card-manual">
+                    <div class="card-header">
+                        <h3><i class="fas fa-keyboard"></i> 手动查询</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label>游戏名</label>
+                            <input type="text" id="selfGameName" placeholder="输入游戏名" class="input-field">
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group" style="flex:1">
+                                <label>标签</label>
+                                <input type="text" id="selfTagLine" value="KR1" class="input-field">
+                            </div>
+                            <div class="input-group" style="flex:1">
+                                <label>大区</label>
+                                <select id="selfPlatform" class="input-field">
+                                    <option value="kr">KR 韩国</option>
+                                    <option value="sg2">SG2 东南亚</option>
+                                    <option value="na1">NA 北美</option>
+                                    <option value="euw1">EU 西欧</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="btnSelfSearch">
+                            <i class="fas fa-search"></i> 查询
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 查询结果 -->
+            <div id="selfResult" class="result-area" style="display:none">
+                <!-- 动态填充 -->
+            </div>
+        </section>
+
+        <!-- ========== 查询他人 ========== -->
+        <section id="search-player" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-user-search"></i> 查询玩家</h3>
+                </div>
+                <div class="card-body">
+                    <div class="input-row">
+                        <div class="input-group" style="flex:2">
+                            <label>游戏名</label>
+                            <input type="text" id="searchGameName" placeholder="输入玩家游戏名" class="input-field">
+                        </div>
+                        <div class="input-group" style="flex:1">
+                            <label>标签</label>
+                            <input type="text" id="searchTagLine" value="KR1" class="input-field">
+                        </div>
+                        <div class="input-group" style="flex:1">
+                            <label>大区</label>
+                            <select id="searchPlatform" class="input-field">
+                                <option value="kr">KR 韩国</option>
+                                <option value="sg2">SG2 东南亚</option>
+                                <option value="na1">NA 北美</option>
+                                <option value="euw1">EU 西欧</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" id="btnSearchPlayer">
+                        <i class="fas fa-search"></i> 查询玩家
+                    </button>
+                </div>
+            </div>
+
+            <div id="searchResult" class="result-area" style="display:none">
+            </div>
+        </section>
+
+        <!-- ========== 英雄图鉴 ========== -->
+        <section id="champion-list" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-crown"></i> 英雄图鉴</h3>
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <button class="btn-filter active" data-role="ALL">全部</button>
+                            <button class="btn-filter" data-role="上单">上单</button>
+                            <button class="btn-filter" data-role="打野">打野</button>
+                            <button class="btn-filter" data-role="中单">中单</button>
+                            <button class="btn-filter" data-role="ADC">ADC</button>
+                            <button class="btn-filter" data-role="辅助">辅助</button>
+                        </div>
+                        <div class="sort-group">
+                            <span style="font-size:12px;color:var(--text-muted)">排序：</span>
+                            <select id="championSort" class="input-field" style="width:auto;padding:4px 8px;font-size:12px">
+                                <option value="key">默认</option>
+                                <option value="rank_asc">排名↑</option>
+                                <option value="win_rate_desc">胜率↓</option>
+                                <option value="pick_rate_desc">选取率↓</option>
+                                <option value="ban_rate_desc">禁用率↓</option>
+                                <option value="difficulty_asc">难度↑</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="championSearch" placeholder="搜索英雄名称..." class="input-field" style="width:100%;margin-bottom:16px">
+                    <!-- 排行摘要 -->
+                    <div id="championStats" class="champion-stats" style="display:none">
+                        <span id="championCount"></span>
+                        <span id="championRoleFilter"></span>
+                    </div>
+                    <div id="championGrid" class="champion-grid">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i> 加载英雄列表...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 英雄详情弹窗 -->
+            <div id="championModal" class="modal" style="display:none">
+                <div class="modal-content modal-lg">
+                    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+                    <div id="championDetail" class="champion-detail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 设置 ========== -->
+        <section id="settings" class="tab-content">
+            <div class="section-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-key"></i> API密钥</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label>Riot API Key</label>
+                            <input type="text" id="apiKeyInput" class="input-field" placeholder="RGAPI-xxxx">
+                        </div>
+                        <button class="btn btn-primary" id="btnTestApi">
+                            <i class="fas fa-vial"></i> 测试API
+                        </button>
+                        <div id="apiTestResult" class="hint-text"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-plug"></i> LCU连接</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="hint-text">连接本地英雄联盟客户端，读取当前登录账号信息</p>
+                        <button class="btn btn-primary" id="btnSettingsLcu">
+                            <i class="fas fa-plug"></i> 连接客户端
+                        </button>
+                        <div id="lcuTestResult" class="hint-text"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-info-circle"></i> 关于</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>LOL数据助手 - 国服版 v2.0</p>
+                        <p class="hint-text">英雄数据来源: Riot Dragontail 12.6.1</p>
+                        <p class="hint-text">API端点: asia (账号/比赛) + kr/sg2 (召唤师/熟练度)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 通知容器 -->
+    <div id="notifications" class="notifications"></div>
+
+    <!-- 加载遮罩 -->
+    <div id="loadingOverlay" class="loading-overlay" style="display:none">
+        <div class="loading-spinner-lg">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p id="loadingText">加载中...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
