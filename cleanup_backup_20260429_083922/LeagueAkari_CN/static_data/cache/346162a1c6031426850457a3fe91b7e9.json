@@ -1,0 +1,1679 @@
+{
+  "hero_name": "内瑟斯",
+  "hero_id": "75",
+  "version": "16.8",
+  "date": "2026-04-28 14:15:12",
+  "lanes": {
+    "bottom": {
+      "win_rate": 47.27,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 1.98,
+      "kills": 5.4,
+      "deaths": 6.6,
+      "assists": 7.7,
+      "total_games": 55,
+      "core_items": [
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "振奋盔甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3065"
+          ],
+          "win_rate": 54.55,
+          "pick_rate": 7.19,
+          "games": 11
+        },
+        {
+          "names": [
+            "三相之力",
+            "振奋盔甲",
+            "冰霜之心"
+          ],
+          "item_ids": [
+            "3078",
+            "3065",
+            "3110"
+          ],
+          "win_rate": 71.43,
+          "pick_rate": 4.58,
+          "games": 7
+        },
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "荆棘之甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3075"
+          ],
+          "win_rate": 42.86,
+          "pick_rate": 4.58,
+          "games": 7
+        },
+        {
+          "names": [
+            "兰德里的折磨",
+            "亡者的板甲",
+            "千变者贾修"
+          ],
+          "item_ids": [
+            "6653",
+            "3742",
+            "6665"
+          ],
+          "win_rate": 60.0,
+          "pick_rate": 3.27,
+          "games": 5
+        },
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "焚天"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "6610"
+          ],
+          "win_rate": 100.0,
+          "pick_rate": 1.96,
+          "games": 3
+        }
+      ],
+      "boots": [
+        {
+          "names": [
+            "明朗之靴"
+          ],
+          "item_ids": [
+            "3158"
+          ],
+          "win_rate": 54.78,
+          "pick_rate": 51.57,
+          "games": 115
+        },
+        {
+          "names": [
+            "水银之靴"
+          ],
+          "item_ids": [
+            "3111"
+          ],
+          "win_rate": 58.46,
+          "pick_rate": 29.15,
+          "games": 65
+        },
+        {
+          "names": [
+            "铁板靴"
+          ],
+          "item_ids": [
+            "3047"
+          ],
+          "win_rate": 50.0,
+          "pick_rate": 11.66,
+          "games": 26
+        }
+      ],
+      "starting_items": [
+        {
+          "names": [
+            "多兰之盾",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1054",
+            "2003"
+          ],
+          "win_rate": 57.66,
+          "games": 111
+        },
+        {
+          "names": [
+            "多兰之戒",
+            "生命药水",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1056",
+            "2003",
+            "2003"
+          ],
+          "win_rate": 53.95,
+          "games": 76
+        },
+        {
+          "names": [
+            "多兰之刃",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1055",
+            "2003"
+          ],
+          "win_rate": 28.57,
+          "games": 7
+        }
+      ],
+      "skill_order": [
+        {
+          "order": "Q > E > W",
+          "detail": "Q > E > W > Q > Q > R > Q > E > Q > E > R > E > E > W > W",
+          "win_rate": 52.55,
+          "pick_rate": 39.37
+        },
+        {
+          "order": "Q > W > E",
+          "detail": "Q > W > E > Q > Q > R > Q > W > Q > W > R > W > W > E > E",
+          "win_rate": 51.33,
+          "pick_rate": 32.47
+        },
+        {
+          "order": "E > Q > W",
+          "detail": "E > Q > W > E > E > R > E > Q > E > Q > R > Q > Q > W > W",
+          "win_rate": 54.05,
+          "pick_rate": 10.63
+        }
+      ],
+      "runes": [
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "迅捷步法",
+            "凯旋",
+            "传说：急速",
+            "坚毅不倒",
+            "坚定",
+            "复苏之风",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/FleetFootwork.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Triumph.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 46.48,
+          "pick_rate": 33.49,
+          "games": 71
+        },
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "征服者",
+            "气定神闲",
+            "传说：急速",
+            "坚毅不倒",
+            "复苏之风",
+            "过度生长",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/Conqueror.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/PresenceOfMind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Overgrowth.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 67.86,
+          "pick_rate": 13.21,
+          "games": 28
+        },
+        {
+          "name": "巫术 + 坚决",
+          "primary": true,
+          "main": "巫术",
+          "vice": "坚决",
+          "runes": [
+            "奥术彗星",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "坚定",
+            "骸骨镀层",
+            "适应之力",
+            "适应之力",
+            "韧性和减速抗性"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/ArcaneComet.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BonePlating.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsTenacityIcon.png"
+          ],
+          "win_rate": 73.33,
+          "pick_rate": 7.08,
+          "games": 15
+        }
+      ],
+      "spells": [
+        {
+          "names": [
+            "闪现",
+            "幽灵疾步"
+          ],
+          "ids": [
+            "4",
+            "6"
+          ],
+          "win_rate": 53.39,
+          "pick_rate": 55.66
+        },
+        {
+          "names": [
+            "幽灵疾步",
+            "传送"
+          ],
+          "ids": [
+            "6",
+            "12"
+          ],
+          "win_rate": 58.7,
+          "pick_rate": 21.7
+        }
+      ]
+    },
+    "mid": {
+      "win_rate": 50.31,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 2.06,
+      "kills": 5.7,
+      "deaths": 6.2,
+      "assists": 7.0,
+      "total_games": 10215,
+      "core_items": [
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "振奋盔甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3065"
+          ],
+          "win_rate": 59.29,
+          "pick_rate": 7.22,
+          "games": 2120
+        },
+        {
+          "names": [
+            "三相之力",
+            "振奋盔甲",
+            "冰霜之心"
+          ],
+          "item_ids": [
+            "3078",
+            "3065",
+            "3110"
+          ],
+          "win_rate": 55.21,
+          "pick_rate": 5.55,
+          "games": 1632
+        },
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "荆棘之甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3075"
+          ],
+          "win_rate": 56.34,
+          "pick_rate": 3.87,
+          "games": 1136
+        },
+        {
+          "names": [
+            "振奋盔甲",
+            "三相之力",
+            "冰霜之心"
+          ],
+          "item_ids": [
+            "3065",
+            "3078",
+            "3110"
+          ],
+          "win_rate": 56.7,
+          "pick_rate": 2.39,
+          "games": 702
+        },
+        {
+          "names": [
+            "夺萃之镰",
+            "冰霜之心",
+            "振奋盔甲"
+          ],
+          "item_ids": [
+            "3508",
+            "3110",
+            "3065"
+          ],
+          "win_rate": 56.31,
+          "pick_rate": 1.64,
+          "games": 483
+        }
+      ],
+      "boots": [
+        {
+          "names": [
+            "明朗之靴"
+          ],
+          "item_ids": [
+            "3158"
+          ],
+          "win_rate": 52.01,
+          "pick_rate": 47.51,
+          "games": 22120
+        },
+        {
+          "names": [
+            "水银之靴"
+          ],
+          "item_ids": [
+            "3111"
+          ],
+          "win_rate": 48.52,
+          "pick_rate": 40.25,
+          "games": 18738
+        },
+        {
+          "names": [
+            "铁板靴"
+          ],
+          "item_ids": [
+            "3047"
+          ],
+          "win_rate": 50.66,
+          "pick_rate": 10.03,
+          "games": 4670
+        }
+      ],
+      "starting_items": [
+        {
+          "names": [
+            "多兰之盾",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1054",
+            "2003"
+          ],
+          "win_rate": 51.59,
+          "games": 29534
+        },
+        {
+          "names": [
+            "多兰之戒",
+            "生命药水",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1056",
+            "2003",
+            "2003"
+          ],
+          "win_rate": 47.81,
+          "games": 9414
+        },
+        {
+          "names": [
+            "多兰之刃",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1055",
+            "2003"
+          ],
+          "win_rate": 46.9,
+          "games": 806
+        }
+      ],
+      "skill_order": [
+        {
+          "order": "Q > E > W",
+          "detail": "Q > E > W > Q > Q > R > Q > E > Q > E > R > E > E > W > W",
+          "win_rate": 50.18,
+          "pick_rate": 39.7
+        },
+        {
+          "order": "Q > W > E",
+          "detail": "Q > W > E > Q > Q > R > Q > W > Q > W > R > W > W > E > E",
+          "win_rate": 52.43,
+          "pick_rate": 34.41
+        },
+        {
+          "order": "E > Q > W",
+          "detail": "E > Q > W > E > E > R > E > Q > E > Q > R > Q > Q > W > W",
+          "win_rate": 49.44,
+          "pick_rate": 9.49
+        }
+      ],
+      "runes": [
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "迅捷步法",
+            "凯旋",
+            "传说：急速",
+            "坚毅不倒",
+            "坚定",
+            "复苏之风",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/FleetFootwork.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Triumph.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 51.37,
+          "pick_rate": 54.13,
+          "games": 23502
+        },
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "征服者",
+            "气定神闲",
+            "传说：急速",
+            "坚毅不倒",
+            "复苏之风",
+            "过度生长",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/Conqueror.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/PresenceOfMind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Overgrowth.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 49.66,
+          "pick_rate": 10.22,
+          "games": 4436
+        },
+        {
+          "name": "巫术 + 启迪",
+          "primary": true,
+          "main": "巫术",
+          "vice": "启迪",
+          "runes": [
+            "相位猛冲",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "饼干配送",
+            "行近速率",
+            "适应之力",
+            "适应之力",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/PhaseRush.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BiscuitDelivery.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ApproachVelocity.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 48.23,
+          "pick_rate": 7.79,
+          "games": 3382
+        }
+      ],
+      "spells": [
+        {
+          "names": [
+            "闪现",
+            "幽灵疾步"
+          ],
+          "ids": [
+            "4",
+            "6"
+          ],
+          "win_rate": 50.92,
+          "pick_rate": 47.72
+        },
+        {
+          "names": [
+            "幽灵疾步",
+            "传送"
+          ],
+          "ids": [
+            "6",
+            "12"
+          ],
+          "win_rate": 50.49,
+          "pick_rate": 32.69
+        }
+      ]
+    },
+    "support": {
+      "win_rate": 45.99,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 1.97,
+      "kills": 2.6,
+      "deaths": 8.2,
+      "assists": 13.5,
+      "total_games": 735,
+      "core_items": [
+        {
+          "names": [
+            "黯炎火炬",
+            "兰德里的折磨",
+            "瑞莱的冰晶节杖"
+          ],
+          "item_ids": [
+            "2503",
+            "6653",
+            "3116"
+          ],
+          "win_rate": 71.43,
+          "pick_rate": 2.15,
+          "games": 21
+        },
+        {
+          "names": [
+            "黯炎火炬",
+            "瑞莱的冰晶节杖",
+            "兰德里的折磨"
+          ],
+          "item_ids": [
+            "2503",
+            "3116",
+            "6653"
+          ],
+          "win_rate": 58.82,
+          "pick_rate": 1.74,
+          "games": 17
+        },
+        {
+          "names": [
+            "兰德里的折磨",
+            "瑞莱的冰晶节杖",
+            "冰霜之心"
+          ],
+          "item_ids": [
+            "6653",
+            "3116",
+            "3110"
+          ],
+          "win_rate": 46.67,
+          "pick_rate": 1.53,
+          "games": 15
+        },
+        {
+          "names": [
+            "卢登的回声",
+            "瑞莱的冰晶节杖",
+            "兰德里的折磨"
+          ],
+          "item_ids": [
+            "6655",
+            "3116",
+            "6653"
+          ],
+          "win_rate": 44.44,
+          "pick_rate": 0.92,
+          "games": 9
+        },
+        {
+          "names": [
+            "黯炎火炬",
+            "扎兹沙克的溃口",
+            "瑞莱的冰晶节杖"
+          ],
+          "item_ids": [
+            "2503",
+            "3871",
+            "3116"
+          ],
+          "win_rate": 28.57,
+          "pick_rate": 0.72,
+          "games": 7
+        }
+      ],
+      "boots": [
+        {
+          "names": [
+            "明朗之靴"
+          ],
+          "item_ids": [
+            "3158"
+          ],
+          "win_rate": 44.94,
+          "pick_rate": 50.7,
+          "games": 1088
+        },
+        {
+          "names": [
+            "铁板靴"
+          ],
+          "item_ids": [
+            "3047"
+          ],
+          "win_rate": 40.55,
+          "pick_rate": 20.22,
+          "games": 434
+        },
+        {
+          "names": [
+            "水银之靴"
+          ],
+          "item_ids": [
+            "3111"
+          ],
+          "win_rate": 38.32,
+          "pick_rate": 17.75,
+          "games": 381
+        }
+      ],
+      "starting_items": [
+        {
+          "names": [
+            "生命药水",
+            "生命药水"
+          ],
+          "item_ids": [
+            "2003",
+            "2003"
+          ],
+          "win_rate": 42.59,
+          "games": 1693
+        },
+        {
+          "names": [
+            "生命药水"
+          ],
+          "item_ids": [
+            "2003"
+          ],
+          "win_rate": 40.0,
+          "games": 145
+        },
+        {
+          "names": [
+            "多兰之盾",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1054",
+            "2003"
+          ],
+          "win_rate": 43.9,
+          "games": 41
+        }
+      ],
+      "skill_order": [
+        {
+          "order": "Q > E > W",
+          "detail": "Q > E > W > Q > Q > R > Q > E > Q > E > R > E > E > W > W",
+          "win_rate": 46.69,
+          "pick_rate": 41.03
+        },
+        {
+          "order": "Q > W > E",
+          "detail": "Q > W > E > Q > Q > R > Q > W > Q > W > R > W > W > E > E",
+          "win_rate": 44.46,
+          "pick_rate": 28.69
+        },
+        {
+          "order": "E > Q > W",
+          "detail": "E > Q > W > E > E > R > E > Q > E > Q > R > Q > Q > W > W",
+          "win_rate": 44.37,
+          "pick_rate": 9.79
+        }
+      ],
+      "runes": [
+        {
+          "name": "巫术 + 启迪",
+          "primary": true,
+          "main": "巫术",
+          "vice": "启迪",
+          "runes": [
+            "召唤：艾黎",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "饼干配送",
+            "行近速率",
+            "适应之力",
+            "适应之力",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/SummonAery.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BiscuitDelivery.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ApproachVelocity.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 39.66,
+          "pick_rate": 16.68,
+          "games": 353
+        },
+        {
+          "name": "巫术 + 启迪",
+          "primary": true,
+          "main": "巫术",
+          "vice": "启迪",
+          "runes": [
+            "奥术彗星",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "饼干配送",
+            "行近速率",
+            "适应之力",
+            "适应之力",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/ArcaneComet.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BiscuitDelivery.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ApproachVelocity.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 46.58,
+          "pick_rate": 13.8,
+          "games": 292
+        },
+        {
+          "name": "巫术 + 坚决",
+          "primary": true,
+          "main": "巫术",
+          "vice": "坚决",
+          "runes": [
+            "奥术彗星",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "坚定",
+            "骸骨镀层",
+            "技能急速",
+            "适应之力",
+            "生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/ArcaneComet.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BonePlating.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthScalingIcon.png"
+          ],
+          "win_rate": 40.39,
+          "pick_rate": 9.59,
+          "games": 203
+        }
+      ],
+      "spells": [
+        {
+          "names": [
+            "闪现",
+            "点燃"
+          ],
+          "ids": [
+            "4",
+            "14"
+          ],
+          "win_rate": 42.84,
+          "pick_rate": 32.33
+        },
+        {
+          "names": [
+            "虚弱",
+            "闪现"
+          ],
+          "ids": [
+            "3",
+            "4"
+          ],
+          "win_rate": 42.05,
+          "pick_rate": 29.11
+        }
+      ]
+    },
+    "top": {
+      "win_rate": 49.82,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 1.86,
+      "kills": 5.1,
+      "deaths": 6.2,
+      "assists": 6.5,
+      "total_games": 24803,
+      "core_items": [
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "振奋盔甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3065"
+          ],
+          "win_rate": 58.0,
+          "pick_rate": 9.63,
+          "games": 5909
+        },
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "荆棘之甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "3075"
+          ],
+          "win_rate": 55.39,
+          "pick_rate": 5.14,
+          "games": 3152
+        },
+        {
+          "names": [
+            "三相之力",
+            "振奋盔甲",
+            "冰霜之心"
+          ],
+          "item_ids": [
+            "3078",
+            "3065",
+            "3110"
+          ],
+          "win_rate": 58.05,
+          "pick_rate": 3.83,
+          "games": 2348
+        },
+        {
+          "names": [
+            "三相之力",
+            "冰霜之心",
+            "焚天"
+          ],
+          "item_ids": [
+            "3078",
+            "3110",
+            "6610"
+          ],
+          "win_rate": 60.99,
+          "pick_rate": 2.54,
+          "games": 1561
+        },
+        {
+          "names": [
+            "三相之力",
+            "荆棘之甲",
+            "振奋盔甲"
+          ],
+          "item_ids": [
+            "3078",
+            "3075",
+            "3065"
+          ],
+          "win_rate": 52.82,
+          "pick_rate": 1.82,
+          "games": 1117
+        }
+      ],
+      "boots": [
+        {
+          "names": [
+            "明朗之靴"
+          ],
+          "item_ids": [
+            "3158"
+          ],
+          "win_rate": 50.09,
+          "pick_rate": 55.65,
+          "games": 57621
+        },
+        {
+          "names": [
+            "水银之靴"
+          ],
+          "item_ids": [
+            "3111"
+          ],
+          "win_rate": 50.14,
+          "pick_rate": 24.5,
+          "games": 25372
+        },
+        {
+          "names": [
+            "铁板靴"
+          ],
+          "item_ids": [
+            "3047"
+          ],
+          "win_rate": 48.6,
+          "pick_rate": 17.15,
+          "games": 17758
+        }
+      ],
+      "starting_items": [
+        {
+          "names": [
+            "多兰之盾",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1054",
+            "2003"
+          ],
+          "win_rate": 50.1,
+          "games": 63650
+        },
+        {
+          "names": [
+            "多兰之戒",
+            "生命药水",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1056",
+            "2003",
+            "2003"
+          ],
+          "win_rate": 48.33,
+          "games": 20978
+        },
+        {
+          "names": [
+            "多兰之刃",
+            "生命药水"
+          ],
+          "item_ids": [
+            "1055",
+            "2003"
+          ],
+          "win_rate": 46.74,
+          "games": 2208
+        }
+      ],
+      "skill_order": [
+        {
+          "order": "Q > E > W",
+          "detail": "Q > E > W > Q > Q > R > Q > E > Q > E > R > E > E > W > W",
+          "win_rate": 50.14,
+          "pick_rate": 38.37
+        },
+        {
+          "order": "Q > W > E",
+          "detail": "Q > W > E > Q > Q > R > Q > W > Q > W > R > W > W > E > E",
+          "win_rate": 52.16,
+          "pick_rate": 35.71
+        },
+        {
+          "order": "E > Q > W",
+          "detail": "E > Q > W > E > E > R > E > Q > E > Q > R > Q > Q > W > W",
+          "win_rate": 50.17,
+          "pick_rate": 9.44
+        }
+      ],
+      "runes": [
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "迅捷步法",
+            "凯旋",
+            "传说：急速",
+            "坚毅不倒",
+            "坚定",
+            "复苏之风",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/FleetFootwork.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Triumph.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 50.07,
+          "pick_rate": 51.62,
+          "games": 48896
+        },
+        {
+          "name": "精密 + 坚决",
+          "primary": true,
+          "main": "精密",
+          "vice": "坚决",
+          "runes": [
+            "征服者",
+            "气定神闲",
+            "传说：急速",
+            "坚毅不倒",
+            "复苏之风",
+            "过度生长",
+            "技能急速",
+            "成长生命值",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/Conqueror.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/PresenceOfMind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Overgrowth.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 49.23,
+          "pick_rate": 11.24,
+          "games": 10647
+        },
+        {
+          "name": "巫术 + 启迪",
+          "primary": true,
+          "main": "巫术",
+          "vice": "启迪",
+          "runes": [
+            "相位猛冲",
+            "法力流系带",
+            "超然",
+            "焦灼",
+            "饼干配送",
+            "行近速率",
+            "适应之力",
+            "适应之力",
+            "成长生命值"
+          ],
+          "rune_icons": [
+            "https://game.gtimg.cn/images/lol/act/img/rune/PhaseRush.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/BiscuitDelivery.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/ApproachVelocity.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+            "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+          ],
+          "win_rate": 47.27,
+          "pick_rate": 8.38,
+          "games": 7941
+        }
+      ],
+      "spells": [
+        {
+          "names": [
+            "幽灵疾步",
+            "传送"
+          ],
+          "ids": [
+            "6",
+            "12"
+          ],
+          "win_rate": 49.67,
+          "pick_rate": 41.12
+        },
+        {
+          "names": [
+            "闪现",
+            "幽灵疾步"
+          ],
+          "ids": [
+            "4",
+            "6"
+          ],
+          "win_rate": 49.86,
+          "pick_rate": 35.69
+        }
+      ]
+    },
+    "jungle": {
+      "win_rate": 0,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 0.0,
+      "kills": 0.0,
+      "deaths": 0.0,
+      "assists": 0.0,
+      "total_games": 0,
+      "core_items": [],
+      "boots": [],
+      "starting_items": [],
+      "skill_order": [],
+      "runes": [],
+      "spells": []
+    }
+  },
+  "counter": {
+    "strong_against": [
+      {
+        "hero_name": "慎",
+        "hero_id": "98",
+        "win_rate": 63.16,
+        "alias": "Shen",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "孙悟空",
+        "hero_id": "62",
+        "win_rate": 59.76,
+        "alias": "MonkeyKing",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "奥莉安娜",
+        "hero_id": "61",
+        "win_rate": 58.72,
+        "alias": "Orianna",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "斯维因",
+        "hero_id": "50",
+        "win_rate": 57.81,
+        "alias": "Swain",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "纳尔",
+        "hero_id": "150",
+        "win_rate": 57.14,
+        "alias": "Gnar",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "克烈",
+        "hero_id": "240",
+        "win_rate": 57.14,
+        "alias": "Kled",
+        "reason": "技能机制优势"
+      },
+      {
+        "hero_name": "泰隆",
+        "hero_id": "91",
+        "win_rate": 56.96,
+        "alias": "Talon",
+        "reason": "对线优势"
+      },
+      {
+        "hero_name": "劫",
+        "hero_id": "238",
+        "win_rate": 56.93,
+        "alias": "Zed",
+        "reason": "技能机制优势"
+      }
+    ],
+    "weak_against": [
+      {
+        "hero_name": "泽拉斯",
+        "hero_id": "101",
+        "win_rate": 29.51,
+        "alias": "Xerath",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "科加斯",
+        "hero_id": "31",
+        "win_rate": 36.36,
+        "alias": "Chogath",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "阿狸",
+        "hero_id": "103",
+        "win_rate": 37.4,
+        "alias": "Ahri",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "艾尼维亚",
+        "hero_id": "34",
+        "win_rate": 37.5,
+        "alias": "Anivia",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "薇古丝",
+        "hero_id": "711",
+        "win_rate": 37.74,
+        "alias": "Vex",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "奥瑞利安索尔",
+        "hero_id": "136",
+        "win_rate": 38.49,
+        "alias": "AurelionSol",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "斯维因",
+        "hero_id": "50",
+        "win_rate": 39.19,
+        "alias": "Swain",
+        "reason": "被技能机制克制"
+      },
+      {
+        "hero_name": "格雷福斯",
+        "hero_id": "104",
+        "win_rate": 41.46,
+        "alias": "Graves",
+        "reason": "被技能机制克制"
+      }
+    ],
+    "source": "tencent_official"
+  },
+  "source": "tencent_official",
+  "timestamp": 1777359881.2488768,
+  "win_rate": {
+    "hero_name": "内瑟斯",
+    "overall": {
+      "win_rate": 49.82,
+      "pick_rate": 0.0,
+      "ban_rate": 0,
+      "tier": "未知",
+      "kda": 1.86
+    },
+    "source": "tencent_official",
+    "timestamp": 1777359881.2498949
+  },
+  "build": {
+    "hero_name": "内瑟斯",
+    "position": "top",
+    "core_items": [
+      {
+        "names": [
+          "三相之力",
+          "冰霜之心",
+          "振奋盔甲"
+        ],
+        "item_ids": [
+          "3078",
+          "3110",
+          "3065"
+        ],
+        "win_rate": 58.0,
+        "pick_rate": 9.63,
+        "games": 5909
+      },
+      {
+        "names": [
+          "三相之力",
+          "冰霜之心",
+          "荆棘之甲"
+        ],
+        "item_ids": [
+          "3078",
+          "3110",
+          "3075"
+        ],
+        "win_rate": 55.39,
+        "pick_rate": 5.14,
+        "games": 3152
+      },
+      {
+        "names": [
+          "三相之力",
+          "振奋盔甲",
+          "冰霜之心"
+        ],
+        "item_ids": [
+          "3078",
+          "3065",
+          "3110"
+        ],
+        "win_rate": 58.05,
+        "pick_rate": 3.83,
+        "games": 2348
+      },
+      {
+        "names": [
+          "三相之力",
+          "冰霜之心",
+          "焚天"
+        ],
+        "item_ids": [
+          "3078",
+          "3110",
+          "6610"
+        ],
+        "win_rate": 60.99,
+        "pick_rate": 2.54,
+        "games": 1561
+      },
+      {
+        "names": [
+          "三相之力",
+          "荆棘之甲",
+          "振奋盔甲"
+        ],
+        "item_ids": [
+          "3078",
+          "3075",
+          "3065"
+        ],
+        "win_rate": 52.82,
+        "pick_rate": 1.82,
+        "games": 1117
+      }
+    ],
+    "boots": [
+      {
+        "names": [
+          "明朗之靴"
+        ],
+        "item_ids": [
+          "3158"
+        ],
+        "win_rate": 50.09,
+        "pick_rate": 55.65,
+        "games": 57621
+      },
+      {
+        "names": [
+          "水银之靴"
+        ],
+        "item_ids": [
+          "3111"
+        ],
+        "win_rate": 50.14,
+        "pick_rate": 24.5,
+        "games": 25372
+      },
+      {
+        "names": [
+          "铁板靴"
+        ],
+        "item_ids": [
+          "3047"
+        ],
+        "win_rate": 48.6,
+        "pick_rate": 17.15,
+        "games": 17758
+      }
+    ],
+    "starting_items": [
+      {
+        "names": [
+          "多兰之盾",
+          "生命药水"
+        ],
+        "item_ids": [
+          "1054",
+          "2003"
+        ],
+        "win_rate": 50.1,
+        "games": 63650
+      },
+      {
+        "names": [
+          "多兰之戒",
+          "生命药水",
+          "生命药水"
+        ],
+        "item_ids": [
+          "1056",
+          "2003",
+          "2003"
+        ],
+        "win_rate": 48.33,
+        "games": 20978
+      },
+      {
+        "names": [
+          "多兰之刃",
+          "生命药水"
+        ],
+        "item_ids": [
+          "1055",
+          "2003"
+        ],
+        "win_rate": 46.74,
+        "games": 2208
+      }
+    ],
+    "skill_order": [
+      {
+        "order": "Q > E > W",
+        "detail": "Q > E > W > Q > Q > R > Q > E > Q > E > R > E > E > W > W",
+        "win_rate": 50.14,
+        "pick_rate": 38.37
+      },
+      {
+        "order": "Q > W > E",
+        "detail": "Q > W > E > Q > Q > R > Q > W > Q > W > R > W > W > E > E",
+        "win_rate": 52.16,
+        "pick_rate": 35.71
+      },
+      {
+        "order": "E > Q > W",
+        "detail": "E > Q > W > E > E > R > E > Q > E > Q > R > Q > Q > W > W",
+        "win_rate": 50.17,
+        "pick_rate": 9.44
+      }
+    ],
+    "runes": [
+      {
+        "name": "精密 + 坚决",
+        "primary": true,
+        "main": "精密",
+        "vice": "坚决",
+        "runes": [
+          "迅捷步法",
+          "凯旋",
+          "传说：急速",
+          "坚毅不倒",
+          "坚定",
+          "复苏之风",
+          "技能急速",
+          "成长生命值",
+          "成长生命值"
+        ],
+        "rune_icons": [
+          "https://game.gtimg.cn/images/lol/act/img/rune/FleetFootwork.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/Triumph.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/Unflinching.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+        ],
+        "win_rate": 50.07,
+        "pick_rate": 51.62,
+        "games": 48896
+      },
+      {
+        "name": "精密 + 坚决",
+        "primary": true,
+        "main": "精密",
+        "vice": "坚决",
+        "runes": [
+          "征服者",
+          "气定神闲",
+          "传说：急速",
+          "坚毅不倒",
+          "复苏之风",
+          "过度生长",
+          "技能急速",
+          "成长生命值",
+          "成长生命值"
+        ],
+        "rune_icons": [
+          "https://game.gtimg.cn/images/lol/act/img/rune/Conqueror.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/PresenceOfMind.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/LegendHaste.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/LastStand.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/SecondWind.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/Overgrowth.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsCDRScalingIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+        ],
+        "win_rate": 49.23,
+        "pick_rate": 11.24,
+        "games": 10647
+      },
+      {
+        "name": "巫术 + 启迪",
+        "primary": true,
+        "main": "巫术",
+        "vice": "启迪",
+        "runes": [
+          "相位猛冲",
+          "法力流系带",
+          "超然",
+          "焦灼",
+          "饼干配送",
+          "行近速率",
+          "适应之力",
+          "适应之力",
+          "成长生命值"
+        ],
+        "rune_icons": [
+          "https://game.gtimg.cn/images/lol/act/img/rune/PhaseRush.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/ManaflowBand.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/Transcendence.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/Scorch.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/BiscuitDelivery.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/ApproachVelocity.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsAdaptiveForceIcon.png",
+          "https://game.gtimg.cn/images/lol/act/img/rune/StatModsHealthPlusIcon.png"
+        ],
+        "win_rate": 47.27,
+        "pick_rate": 8.38,
+        "games": 7941
+      }
+    ],
+    "spells": [
+      {
+        "names": [
+          "幽灵疾步",
+          "传送"
+        ],
+        "ids": [
+          "6",
+          "12"
+        ],
+        "win_rate": 49.67,
+        "pick_rate": 41.12
+      },
+      {
+        "names": [
+          "闪现",
+          "幽灵疾步"
+        ],
+        "ids": [
+          "4",
+          "6"
+        ],
+        "win_rate": 49.86,
+        "pick_rate": 35.69
+      }
+    ],
+    "source": "tencent_official",
+    "timestamp": 1777359881.2498949
+  },
+  "wanplus": {
+    "hero_name": "内瑟斯",
+    "role": "战士、坦克",
+    "difficulty": 6,
+    "strengths": [],
+    "weaknesses": [],
+    "combo_tips": "",
+    "source": "tencent_official",
+    "timestamp": 1777359881.2498949
+  }
+}
