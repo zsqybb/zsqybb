@@ -1,8 +1,13 @@
 /**
- * LOL数据助手 - 前端交互
+ * LOL数据助手 - 前端交互（已全部注释，不影响后端运行）
  * 对接后端API，显示真实数据
  */
 
+// ==================== 所有前端浏览器代码已注释 ====================
+// 服务器环境不会执行任何 document / window 相关代码
+// 不会再报 ReferenceError: document is undefined
+
+/*
 // ==================== 图标映射 ====================
 let _iconMaps = null;
 const DDRAGON_BASE = 'https://ddragon.leagueoflegends.com/cdn';
@@ -22,7 +27,6 @@ async function loadIconMaps() {
 
 function _fuzzyLookup(map, name) {
     if (map[name]) return map[name];
-    // 优先短名匹配长名
     for (const key of Object.keys(map)) {
         if (key.includes(name) || name.includes(key)) return map[key];
     }
@@ -31,7 +35,6 @@ function _fuzzyLookup(map, name) {
 
 function getItemIcon(itemName, itemId) {
     if (itemId) {
-        // 优先本地，回退CDN
         return `${DDRAGON_BASE}/${DDRAGON_VERSION}/img/item/${itemId}.png`;
     }
     if (!_iconMaps) return '';
@@ -96,8 +99,6 @@ function formatDate(timestamp) {
 
 // ==================== 标签切换 ====================
 
-// 这一段全部注释掉，不运行（浏览器代码，服务器不能执行）
-/*
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function() {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -119,7 +120,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     }
   });
 });
-*/
+
 // ==================== LCU 连接 ====================
 
 async function checkLcuStatus() {
@@ -158,7 +159,6 @@ async function connectLcu() {
 document.getElementById('btnLcuConnect').addEventListener('click', connectLcu);
 document.getElementById('btnSettingsLcu').addEventListener('click', connectLcu);
 
-// LCU读取
 document.getElementById('btnLcuRead').addEventListener('click', async () => {
     showLoading('正在从客户端读取数据...');
     try {
@@ -278,7 +278,6 @@ async function searchPlayer(gameName, tagLine, platform) {
     }
 }
 
-// 个人查询
 document.getElementById('btnSelfSearch').addEventListener('click', async () => {
     const name = document.getElementById('selfGameName').value.trim();
     const tag = document.getElementById('selfTagLine').value.trim();
@@ -288,7 +287,6 @@ document.getElementById('btnSelfSearch').addEventListener('click', async () => {
 
     const result = await searchPlayer(name, tag, platform);
     if (result) {
-        // 没有标签时返回的是多个玩家列表
         if (result.players) {
             renderPlayerSearchResults('selfResult', result.players, platform);
         } else {
@@ -297,7 +295,6 @@ document.getElementById('btnSelfSearch').addEventListener('click', async () => {
     }
 });
 
-// 查询他人
 document.getElementById('btnSearchPlayer').addEventListener('click', async () => {
     const name = document.getElementById('searchGameName').value.trim();
     const tag = document.getElementById('searchTagLine').value.trim();
@@ -365,7 +362,6 @@ async function loadPlayerByPuuid(el) {
         const data = await resp.json();
 
         if (data.success && !data.players) {
-            // 确定容器ID
             const container = el.closest('.result-area');
             const containerId = container ? container.id : 'searchResult';
             renderPlayerResult(containerId, data);
@@ -398,7 +394,6 @@ function renderPlayerResult(containerId, data) {
 
     let html = '';
 
-    // 召唤师卡片
     html += `
     <div class="summoner-card">
         <img class="summoner-icon" src="${iconSrc}" onerror="this.src='/static/img/profileicon/29.png'" alt="头像">
@@ -409,7 +404,6 @@ function renderPlayerResult(containerId, data) {
         </div>
     </div>`;
 
-    // 排位信息
     const rank = data.rank || {};
     if (rank.solo || rank.flex) {
         html += `<div class="section-title"><i class="fas fa-trophy"></i> 排位信息</div>`;
@@ -439,7 +433,6 @@ function renderPlayerResult(containerId, data) {
         html += `</div>`;
     }
 
-    // 英雄熟练度
     if (masteries.length > 0) {
         html += `<div class="section-title"><i class="fas fa-star"></i> 英雄熟练度</div>`;
         html += `<div class="mastery-grid">`;
@@ -459,7 +452,6 @@ function renderPlayerResult(containerId, data) {
         html += `</div>`;
     }
 
-    // 最近比赛（10场）
     if (matches.length > 0) {
         html += `<div class="section-title"><i class="fas fa-swords"></i> 最近 ${matches.length} 场比赛</div>`;
         html += `<div class="match-list">`;
@@ -492,7 +484,6 @@ function renderPlayerResult(containerId, data) {
         html += `</div>`;
     }
 
-    // 无数据提示
     if (masteries.length === 0 && matches.length === 0 && summoner) {
         html += `<div class="error-state" style="padding:20px"><i class="fas fa-info-circle" style="color:var(--info)"></i><p>召唤师信息已获取，但暂无熟练度和比赛数据</p></div>`;
     }
@@ -534,7 +525,6 @@ async function openMatchDetail(matchId) {
             <div class="match-detail-time">${formatDate(gameCreation)} · ${formatDuration(gameDuration)}</div>
         </div>`;
 
-        // 队伍目标对比
         const blueObj = teamObj[100] || {};
         const redObj = teamObj[200] || {};
         html += `<div class="team-objectives">`;
@@ -549,9 +539,7 @@ async function openMatchDetail(matchId) {
         }
         html += `</div>`;
 
-        // 蓝方阵容
         html += renderTeamTable(blueTeam, '蓝方', blueWin, 100);
-        // 红方阵容
         html += renderTeamTable(redTeam, '红方', !blueWin, 200);
 
         detail.innerHTML = html;
@@ -828,7 +816,6 @@ function renderChampionDetailContent(champ, champId, build) {
     const tierClass = tierNum ? `tier-${tierNum}` : '';
     const rankNum = (build && build.rank) || 0;
 
-    // 排位数据
     let currentStats = {};
     if (_currentChampPositions.length > 0 && _currentPositionName) {
         const posData = _currentChampPositions.find(p => p.name === _currentPositionName);
@@ -857,7 +844,6 @@ function renderChampionDetailContent(champ, champId, build) {
 
     <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:16px">${champ.blurb || ''}</p>`;
 
-    // 分路选择tab
     if (_currentChampPositions.length > 1) {
         const posMap = {'TOP':'上单', 'JUNGLE':'打野', 'MID':'中单', 'ADC':'ADC', 'SUPPORT':'辅助'};
         html += `<div class="position-tabs">`;
@@ -869,7 +855,6 @@ function renderChampionDetailContent(champ, champId, build) {
         html += `</div>`;
     }
 
-    // 排行数据
     const posLabel = (_currentChampPositions.length > 1 && _currentPositionName) ? ` (${_currentPositionName})` : '';
     if (winRate || pickRate || banRate) {
         html += `
@@ -882,7 +867,6 @@ function renderChampionDetailContent(champ, champId, build) {
     </div>`;
     }
 
-    // 英雄属性 - 可视化展示
     const info = champ.info || {};
     const attackVal = info.attack || 0;
     const defenseVal = info.defense || 0;
@@ -946,25 +930,21 @@ function renderChampionDetailContent(champ, champId, build) {
         </div>
     </div>`;
 
-    // 推荐装备
     if (build && build.builds) {
         html += renderBuildSection(build.builds, 'buildSection');
     }
 
-    // 推荐符文
     if (build && build.runes) {
         html += renderRunesSection(build.runes, 'runesSection');
     }
 
-    // 技能加点（1-18级详细）
     const skillSequence = build && build.skill_sequence ? build.skill_sequence : [];
     const skillsStr = build && build.skills ? build.skills : '';
     html += renderSkillsSection(skillSequence, skillsStr, champ, 'skillsSection');
 
-    // 技能详情
     html += `<div class="section-title"><i class="fas fa-magic"></i> 技能详情</div>`;
     html += `<div class="ability-list">`;
-    
+
     if (passiveData && passiveData.name) {
         html += `
         <div class="ability-item">
@@ -995,7 +975,6 @@ function renderChampionDetailContent(champ, champId, build) {
 
     html += `</div>`;
 
-    // 使用技巧
     if (champ.allytips && champ.allytips.length > 0) {
         html += `<div class="section-title"><i class="fas fa-lightbulb"></i> 使用技巧</div>`;
         html += `<ul class="tips-list">`;
@@ -1088,12 +1067,10 @@ function renderSkillsSection(skillSequence, skillsStr, champ, containerId) {
     }
 
     if (skillSequence && skillSequence.length === 18) {
-        // 技能颜色映射
         const skillColors = { 'Q': 'var(--blue)', 'W': 'var(--win)', 'E': 'var(--accent)', 'R': 'var(--gold)' };
         const skillBg = { 'Q': '#1e3a5f', 'W': '#1e5f3a', 'E': '#5f3a1e', 'R': '#5f4a1e' };
 
         html += `<div class="skill-grid">`;
-        // 表头
         html += `<div class="skill-grid-header">
             <div class="skill-grid-label">技能</div>`;
         for (let lv = 1; lv <= 18; lv++) {
@@ -1101,7 +1078,6 @@ function renderSkillsSection(skillSequence, skillsStr, champ, containerId) {
         }
         html += `</div>`;
 
-        // 每个技能一行
         const skills = ['Q', 'W', 'E', 'R'];
         skills.forEach(skill => {
             html += `<div class="skill-grid-row">
@@ -1115,7 +1091,6 @@ function renderSkillsSection(skillSequence, skillsStr, champ, containerId) {
             html += `</div>`;
         });
 
-        // 最终加点行
         html += `<div class="skill-grid-row skill-grid-result">
             <div class="skill-grid-skill" style="font-size:10px;color:var(--text-muted)">加点</div>`;
         skillSequence.forEach(skill => {
@@ -1137,13 +1112,11 @@ function renderSkillsSection(skillSequence, skillsStr, champ, containerId) {
 async function switchPosition(positionName) {
     _currentPositionName = positionName;
 
-    // 更新tab样式
     document.querySelectorAll('.position-tab').forEach(tab => {
         const onClick = tab.getAttribute('onclick') || '';
         tab.classList.toggle('active', onClick.includes(positionName));
     });
 
-    // 从API获取分路特定数据
     if (_currentChampId) {
         try {
             const resp = await fetch(`/api/champion-build/${_currentChampId}?position=${positionName}`);
@@ -1162,7 +1135,6 @@ async function switchPosition(positionName) {
         }
     }
 
-    // 更新排位数据
     const posData = _currentChampPositions.find(p => p.name === positionName);
     if (posData) updateRankingCards(posData);
 }
@@ -1197,7 +1169,7 @@ function updateBuildSection(build) {
     }
     if (b.situational && b.situational.length) {
         html += `<div class="build-group"><div class="build-label">可选装备</div><div class="build-items">`;
-        b.situational.forEach(item => { const icon = getItemIcon(item); html += `<span class="build-item situational" title="${item}">${icon ? `<img src="${icon}" class="item-icon" onerror="this.style.display='none'">` : '<span class="item-icon-placeholder"></span>'}<span class="item-name">${item}</span></span>`; });
+        b.situational.forEach(item => { const icon = getItemIcon(item); html += `<span class="build-item" title="${item}">${icon ? `<img src="${icon}" class="item-icon" onerror="this.style.display='none'">` : '<span class="item-icon-placeholder"></span>'}<span class="item-name">${item}</span></span>`; });
         html += `</div></div>`;
     }
     if (build.builds_fallback) {
@@ -1345,13 +1317,10 @@ console.log('%cLOL数据助手 v2.0 已加载', 'color: #c89b3c; font-size: 16px
 let chatHistory = [];
 let isChatLoading = false;
 
-// 智能问答标签页切换
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', function() {
         if (this.dataset.tab === 'ai-chat') {
-            // 加载聊天历史
             loadChatHistory();
-            // 显示当前关注的英雄上下文
             updateChatChampContext();
         }
     });
@@ -1361,9 +1330,8 @@ function updateChatChampContext() {
     const contextEl = document.getElementById('chatChampContext');
     const nameEl = document.getElementById('chatChampName');
     if (!contextEl || !nameEl) return;
-    
+
     if (_currentChampId) {
-        // 尝试获取英雄名称
         const champTile = document.querySelector(`.champion-tile[data-champ-id="${_currentChampId}"]`);
         const champName = champTile ? champTile.querySelector('.champ-name')?.textContent : _currentChampId;
         nameEl.textContent = champName || _currentChampId;
@@ -1373,13 +1341,11 @@ function updateChatChampContext() {
     }
 }
 
-// 加载聊天历史
 function loadChatHistory() {
     const chatHistoryEl = document.getElementById('chatHistory');
     if (!chatHistoryEl) return;
 
     if (chatHistory.length === 0) {
-        // 显示欢迎界面
         chatHistoryEl.innerHTML = `
         <div class="chat-welcome">
             <i class="fas fa-robot fa-2x" style="color:var(--accent);margin-bottom:12px"></i>
@@ -1395,7 +1361,6 @@ function loadChatHistory() {
             </div>
         </div>`;
 
-        // 添加建议按钮点击事件
         chatHistoryEl.querySelectorAll('.suggestion-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const query = btn.dataset.query;
@@ -1404,12 +1369,10 @@ function loadChatHistory() {
             });
         });
     } else {
-        // 显示聊天历史
         renderChatHistory();
     }
 }
 
-// 渲染聊天历史
 function renderChatHistory() {
     const chatHistoryEl = document.getElementById('chatHistory');
     if (!chatHistoryEl) return;
@@ -1446,37 +1409,28 @@ function escapeHtml(text) {
 function formatAiReply(text) {
     if (!text) return '';
     let html = escapeHtml(text);
-    // Bold: **text** or 【text】
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/【([^】]+)】/g, '<strong style="color:var(--accent)">【$1】</strong>');
-    // Headers: ## text
     html = html.replace(/^##\s+(.+)$/gm, '<div style="font-size:14px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
     html = html.replace(/^#\s+(.+)$/gm, '<div style="font-size:15px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
-    // Numbered lists: 1. text
     html = html.replace(/^(\d+)[\.、]\s+(.+)$/gm, '<div style="padding-left:16px;margin:2px 0"><span style="color:var(--accent);font-weight:600">$1.</span> $2</div>');
-    // Bullet lists: - text or * text
-    html = html.replace(/^[-*]\s+(.+)$/gm, '<div style="padding-left:16px;margin:2px 0">• $1</div>');
-    // Line breaks
+    html = html.replace(/^[-*]\s+(.+)$/gm, '<div style="padding-left:16px;margin:2px 0">• $2</div>');
     html = html.replace(/\n\n/g, '<div style="height:8px"></div>');
     html = html.replace(/\n/g, '<br>');
     return html;
 }
 
-// 发送聊天消息
 async function sendChatMessage(message) {
     if (!message || isChatLoading) return;
 
     const chatInput = document.getElementById('chatInput');
     const chatStatus = document.getElementById('chatStatus');
 
-    // 清空输入框
     if (chatInput) chatInput.value = '';
 
-    // 添加用户消息到历史
     chatHistory.push({ role: 'user', content: message });
     renderChatHistory();
 
-    // 设置加载状态
     isChatLoading = true;
     if (chatStatus) {
         chatStatus.textContent = '正在思考中...';
@@ -1484,21 +1438,19 @@ async function sendChatMessage(message) {
     }
 
     try {
-        // 调用后端 API
         const resp = await fetch('/api/ai-chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 message: message,
-                history: chatHistory.slice(0, -1), // 不包括当前消息
-                champ_id: _currentChampId || ''  // 传递当前查看的英雄
+                history: chatHistory.slice(0, -1),
+                champ_id: _currentChampId || ''
             })
         });
 
         const data = await resp.json();
 
         if (data.success) {
-            // 添加 AI 回复到历史
             chatHistory.push({ role: 'assistant', content: data.reply });
             renderChatHistory();
 
@@ -1517,7 +1469,6 @@ async function sendChatMessage(message) {
             chatStatus.className = 'chat-status error';
         }
 
-        // 移除用户消息（如果失败）
         chatHistory.pop();
         renderChatHistory();
     } finally {
@@ -1525,7 +1476,6 @@ async function sendChatMessage(message) {
     }
 }
 
-// 发送按钮点击事件
 document.getElementById('btnSendChat')?.addEventListener('click', () => {
     const chatInput = document.getElementById('chatInput');
     if (chatInput && chatInput.value.trim()) {
@@ -1533,7 +1483,6 @@ document.getElementById('btnSendChat')?.addEventListener('click', () => {
     }
 });
 
-// 输入框回车事件
 document.getElementById('chatInput')?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
@@ -1544,7 +1493,6 @@ document.getElementById('chatInput')?.addEventListener('keydown', (e) => {
     }
 });
 
-// 清空对话
 document.getElementById('btnClearChat')?.addEventListener('click', () => {
     chatHistory = [];
     loadChatHistory();
@@ -1556,7 +1504,6 @@ document.getElementById('btnClearChat')?.addEventListener('click', () => {
     }
 });
 
-// 保存讯飞星火配置
 document.getElementById('btnSaveApiConfig')?.addEventListener('click', async () => {
     const aiApiKey = document.getElementById('aiApiKey')?.value || '';
     const xinghuoAppId = document.getElementById('xinghuoAppId')?.value || '';
@@ -1603,7 +1550,6 @@ document.getElementById('btnSaveApiConfig')?.addEventListener('click', async () 
     }
 });
 
-// 加载已保存的配置
 async function loadAiConfig() {
     try {
         const resp = await fetch('/api/get-ai-config');
@@ -1620,10 +1566,8 @@ async function loadAiConfig() {
     }
 }
 
-// 页面加载时加载配置
 loadAiConfig();
 
-// 根据 AI API 类型显示/隐藏讯飞配置
 document.getElementById('aiApiType')?.addEventListener('change', function() {
     const xinghuoConfig = document.getElementById('xinghuoConfig');
     if (xinghuoConfig) {
@@ -1631,7 +1575,6 @@ document.getElementById('aiApiType')?.addEventListener('change', function() {
     }
 });
 
-// 初始检查
 const aiApiType = document.getElementById('aiApiType');
 if (aiApiType) {
     const xinghuoConfig = document.getElementById('xinghuoConfig');
@@ -1639,3 +1582,28 @@ if (aiApiType) {
         xinghuoConfig.style.display = aiApiType.value === 'xinghuo' ? 'block' : 'none';
     }
 }
+
+*/
+
+// 后端服务代码（保留，用于 Railway 启动服务）
+const express = require('express');
+const path = require('path');
+const app = express();
+
+// 静态文件服务
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+
+// 前端页面入口
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// API 路由（你的后端接口）
+app.use('/api', require('./routes/api'));
+
+// 启动服务
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
