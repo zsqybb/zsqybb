@@ -1465,12 +1465,12 @@ function escapeHtml(text) {
 function formatAiReply(text) {
     if (!text) return '';
     let html = escapeHtml(text);
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/【([^】]+)】/g, '<strong style="color:var(--accent)">【$1】</strong>');
-    html = html.replace(/^##\s+(.+)$/gm, '<div style="font-size:14px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
-    html = html.replace(/^#\s+(.+)$/gm, '<div style="font-size:15px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
-    html = html.replace(/^(\d+)[\.、]\s+(.+)$/gm, '<div style="padding-left:16px;margin:2px 0"><span style="color:var(--accent);font-weight:600">$1.</span> $2</div>');
-    html = html.replace(/^[-*]\s+(.+)$/gm, '<div style="padding-left:16px;margin:2px 0">• $2</div>');
+    html = html.replace(new RegExp('\\\\*\\\\*([^*]+)\\\\*\\\\*', 'g'), '<strong>$1</strong>');
+    html = html.replace(new RegExp('\\\\u3010([^\\\\u3011]+)\\\\u3011', 'g'), '<strong style="color:var(--accent)">\u3010$1\u3011</strong>');
+    html = html.replace(new RegExp('^##\\\\s+(.+)$', 'gm'), '<div style="font-size:14px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
+    html = html.replace(new RegExp('^#\\\\s+(.+)$', 'gm'), '<div style="font-size:15px;font-weight:700;color:var(--accent);margin:10px 0 4px">$1</div>');
+    html = html.replace(new RegExp('^(\\\\d+)[.]\\\\s+(.+)$', 'gm'), '<div style="padding-left:16px;margin:2px 0"><span style="color:var(--accent);font-weight:600">$1.</span> $2</div>');
+    html = html.replace(new RegExp('^[-*]\\\\s+(.+)$', 'gm'), '<div style="padding-left:16px;margin:2px 0">• $2</div>');
     html = html.replace(/\n\n/g, '<div style="height:8px"></div>');
     html = html.replace(/\n/g, '<br>');
     return html;
