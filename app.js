@@ -96,7 +96,11 @@ function formatDate(timestamp) {
 
 // ==================== 标签切换 ====================
 
+/*
 document.querySelectorAll('.nav-item').forEach(item => {
+  // 里面所有代码
+});
+*/
     item.addEventListener('click', function() {
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
