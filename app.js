@@ -96,33 +96,30 @@ function formatDate(timestamp) {
 
 // ==================== 标签切换 ====================
 
+// 这一段全部注释掉，不运行（浏览器代码，服务器不能执行）
 /*
 document.querySelectorAll('.nav-item').forEach(item => {
-  // 里面所有代码
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const tabId = this.dataset.tab;
+    document.getElementById(tabId).classList.add('active');
+
+    const titles = {
+        'self-info': '个人信息',
+        'search-player': '查询他人',
+        'champion-list': '英雄图鉴',
+        'settings': '设置'
+    };
+    document.getElementById('pageTitle').textContent = titles[tabId];
+
+    if (tabId === 'champion-list' && !window._championsLoaded) {
+        loadChampions();
+    }
+  });
 });
 */
-    item.addEventListener('click', function() {
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        const tabId = this.dataset.tab;
-        document.getElementById(tabId).classList.add('active');
-
-        const titles = {
-            'self-info': '个人信息',
-            'search-player': '查询他人',
-            'champion-list': '英雄图鉴',
-            'settings': '设置'
-        };
-        document.getElementById('pageTitle').textContent = titles[tabId];
-
-        // 首次打开英雄图鉴时加载数据
-        if (tabId === 'champion-list' && !window._championsLoaded) {
-            loadChampions();
-        }
-    });
-});
-
 // ==================== LCU 连接 ====================
 
 async function checkLcuStatus() {
