@@ -36,6 +36,10 @@
                 <i class="fas fa-cog"></i>
                 <span>设置</span>
             </li>
+            <li class="nav-item" data-tab="ai-chat">
+                <i class="fas fa-robot"></i>
+                <span>智能问答</span>
+            </li>
         </ul>
 
         <div class="sidebar-footer">
@@ -88,9 +92,9 @@
                             <input type="text" id="selfGameName" placeholder="输入游戏名" class="input-field">
                         </div>
                         <div class="input-row">
-                            <div class="input-group" style="flex:1">
-                                <label>标签</label>
-                                <input type="text" id="selfTagLine" value="KR1" class="input-field">
+                        <div class="input-group" style="flex:1">
+                            <label>标签 <span style="font-size:10px;color:var(--text-muted)">(可选)</span></label>
+                            <input type="text" id="selfTagLine" placeholder="如KR1，留空搜索所有" class="input-field">
                             </div>
                             <div class="input-group" style="flex:1">
                                 <label>大区</label>
@@ -128,8 +132,8 @@
                             <input type="text" id="searchGameName" placeholder="输入玩家游戏名" class="input-field">
                         </div>
                         <div class="input-group" style="flex:1">
-                            <label>标签</label>
-                            <input type="text" id="searchTagLine" value="KR1" class="input-field">
+                            <label>标签 <span style="font-size:10px;color:var(--text-muted)">(可选)</span></label>
+                            <input type="text" id="searchTagLine" placeholder="如KR1，留空搜索所有" class="input-field">
                         </div>
                         <div class="input-group" style="flex:1">
                             <label>大区</label>
@@ -211,9 +215,15 @@
                         <h3><i class="fas fa-key"></i> API密钥</h3>
                     </div>
                     <div class="card-body">
+                        <p class="hint-text" style="margin-bottom:12px">
+                            Riot API Key 是访问英雄联盟数据接口的凭证。本程序已内置密钥，无需手动填写。<br>
+                            <strong>注意：</strong>开发密钥每24小时过期，如果查询失败（401错误），说明密钥已过期，需要到 
+                            <a href="https://developer.riotgames.com/" target="_blank" style="color:var(--accent)">Riot开发者平台</a> 
+                            重新获取并替换。生产密钥则长期有效。
+                        </p>
                         <div class="input-group">
                             <label>Riot API Key</label>
-                            <input type="text" id="apiKeyInput" class="input-field" placeholder="RGAPI-xxxx">
+                            <input type="text" id="apiKeyInput" class="input-field" placeholder="RGAPI-xxxx" disabled>
                         </div>
                         <button class="btn btn-primary" id="btnTestApi">
                             <i class="fas fa-vial"></i> 测试API
@@ -242,7 +252,62 @@
                     <div class="card-body">
                         <p>LOL数据助手 - 国服版 v2.0</p>
                         <p class="hint-text">英雄数据来源: Riot Dragontail 12.6.1</p>
+                        <p class="hint-text">排行数据来源: OP.GG 韩服排位统计</p>
                         <p class="hint-text">API端点: asia (账号/比赛) + kr/sg2 (召唤师/熟练度)</p>
+                        <p class="hint-text" style="margin-top:8px">
+                            <strong>关于API密钥：</strong>本程序使用的Riot API密钥已内置在代码中。
+                            开发密钥（Development Key）每24小时自动过期，如果出现"API密钥无效或已过期"的错误，
+                            请前往 <a href="https://developer.riotgames.com/" target="_blank" style="color:var(--accent)">Riot开发者网站</a> 
+                            登录后复制新密钥，然后修改 <code>riot_api_client.py</code> 中的 <code>API_KEY</code> 变量即可。
+                            你不需要每次都填，只有密钥过期时才需要更新。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 智能问答 ========== -->
+        <section id="ai-chat" class="tab-content">
+            <div class="section-grid">
+                <div class="card card-lg">
+                    <div class="card-header">
+                        <h3><i class="fas fa-robot"></i> LOL 智能助手</h3>
+                        <div class="chat-actions">
+                            <button class="btn btn-sm" id="btnClearChat" title="清空对话">
+                                <i class="fas fa-trash-alt"></i> 清空
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display:flex;flex-direction:column;height:75vh;">
+                        <!-- 对话历史 -->
+                        <div id="chatHistory" class="chat-history">
+                            <div class="chat-welcome">
+                                <i class="fas fa-robot fa-2x" style="color:var(--accent);margin-bottom:12px"></i>
+                                <h3>LOL 智能助手</h3>
+                                <p class="hint-text">基于韩服排位数据，为您提供专业的英雄联盟指导</p>
+                                <div class="chat-suggestions">
+                                    <button class="suggestion-btn" data-query="当前版本哪些英雄最强？推荐上分英雄">当前版本T1英雄推荐</button>
+                                    <button class="suggestion-btn" data-query="上单什么英雄好上分？分析一下当前上单格局">上单上分攻略</button>
+                                    <button class="suggestion-btn" data-query="亚索怎么出装？符文怎么带？有什么对线技巧？">亚索攻略详解</button>
+                                    <button class="suggestion-btn" data-query="中单法师和刺客哪个版本更强势？分析一下">中单版本分析</button>
+                                    <button class="suggestion-btn" data-query="辅助怎么上分？硬辅和软辅哪个好？">辅助上分指南</button>
+                                    <button class="suggestion-btn" data-query="打野节奏怎么把控？什么时候该gank？">打野节奏教学</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 输入区域 -->
+                        <div class="chat-input-area">
+                            <div id="chatChampContext" class="chat-champ-context" style="display:none">
+                                <i class="fas fa-link"></i> 当前关注: <span id="chatChampName"></span>
+                            </div>
+                            <div class="chat-input-group">
+                                <input type="text" id="chatInput" class="input-field" placeholder="输入关于英雄联盟的问题，如：亚索怎么出装？上单怎么上分？">
+                                <button class="btn btn-primary" id="btnSendChat">
+                                    <i class="fas fa-paper-plane"></i> 发送
+                                </button>
+                            </div>
+                            <div class="chat-status" id="chatStatus"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,6 +322,15 @@
         <div class="loading-spinner-lg">
             <i class="fas fa-spinner fa-spin"></i>
             <p id="loadingText">加载中...</p>
+        </div>
+    </div>
+
+    <!-- 对局详情弹窗 -->
+    <div id="matchDetailModal" class="modal" style="display:none">
+        <div class="modal-content modal-lg">
+            <button class="modal-close" id="matchDetailClose"><i class="fas fa-times"></i></button>
+            <div id="matchDetailContent" class="match-detail">
+            </div>
         </div>
     </div>
 

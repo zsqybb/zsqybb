@@ -9,7 +9,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-API_KEY = "RGAPI-32e586c5-5391-4738-8b1c-9bbdc86ddd53"
+API_KEY = "RGAPI-d29baf42-9a15-450e-9d1b-1935a08b0b0f"
 
 # 区域端点配置
 REGIONAL = {
@@ -182,7 +182,7 @@ def get_match_ids(puuid, count=20, regional=None):
 
 def get_match_detail(match_id, regional=None):
     """
-    Match-V5: 获取比赛详情
+    Match-V5: 获取比赛详情（含双方完整阵容）
     端点: asia.api.riotgames.com
     """
     regional = regional or DEFAULT_REGIONAL
@@ -192,28 +192,69 @@ def get_match_detail(match_id, regional=None):
     if result["success"]:
         data = result["data"]
         info = data.get("info", {})
-        metadata = data.get("metadata", {})
 
         participants = []
         for p in info.get("participants", []):
+            # 游戏名+标签
+            riot_id_game_name = p.get("riotIdGameName", "")
+            riot_id_tag_line = p.get("riotIdTagline", "")
+            summoner_name = p.get("summonerName", "") or riot_id_game_name
+            
             participants.append({
                 "puuid": p.get("puuid", ""),
                 "champion_id": p.get("championId", 0),
                 "champion_name": p.get("championName", ""),
+                "summoner_name": summoner_name,
+                "riot_id_game_name": riot_id_game_name,
+                "riot_id_tag_line": riot_id_tag_line,
                 "kills": p.get("kills", 0),
                 "deaths": p.get("deaths", 0),
                 "assists": p.get("assists", 0),
                 "win": p.get("win", False),
                 "lane": p.get("lane", ""),
                 "role": p.get("individualPosition", ""),
+                "team_id": p.get("teamId", 100),
                 "summoner_level": p.get("summonerLevel", 0),
                 "items": [p.get(f"item{i}", 0) for i in range(6)],
                 "total_minions_killed": p.get("totalMinionsKilled", 0),
                 "vision_score": p.get("visionScore", 0),
                 "gold_earned": p.get("goldEarned", 0),
                 "total_damage_dealt": p.get("totalDamageDealtToChampions", 0),
+                "total_damage_taken": p.get("totalDamageTaken", 0),
+                "total_healing": p.get("totalHeal", 0),
+                "damage_self_mitigated": p.get("damageSelfMitigated", 0),
+                "wards_placed": p.get("wardsPlaced", 0),
+                "wards_killed": p.get("wardsKilled", 0),
+                "double_kills": p.get("doubleKills", 0),
+                "triple_kills": p.get("tripleKills", 0),
+                "quadra_kills": p.get("quadraKills", 0),
+                "penta_kills": p.get("pentaKills", 0),
+                "largest_killing_spree": p.get("largestKillingSpree", 0),
+                "spell1_id": p.get("spell1Id", 0),
+                "spell2_id": p.get("spell2Id", 0),
+                "perks": p.get("perks", {}),
                 "game_duration": info.get("gameDuration", 0),
             })
+
+        # 分蓝红双方
+        blue_team = [p for p in participants if p["team_id"] == 100]
+        red_team = [p for p in participants if p["team_id"] == 200]
+        blue_win = blue_team[0]["win"] if blue_team else False
+
+        # 队伍目标数据
+        teams_data = info.get("teams", [])
+        team_objectives = {}
+        for t in teams_data:
+            tid = t.get("teamId", 100)
+            objs = t.get("objectives", {})
+            team_objectives[tid] = {
+                "champion": objs.get("champion", {}).get("kills", 0),
+                "tower": objs.get("tower", {}).get("kills", 0),
+                "inhibitor": objs.get("inhibitor", {}).get("kills", 0),
+                "baron": objs.get("baron", {}).get("kills", 0),
+                "dragon": objs.get("dragon", {}).get("kills", 0),
+                "riftHerald": objs.get("riftHerald", {}).get("kills", 0),
+            }
 
         return {
             "success": True,
@@ -222,15 +263,82 @@ def get_match_detail(match_id, regional=None):
             "game_type": info.get("gameType", ""),
             "game_duration": info.get("gameDuration", 0),
             "game_creation": info.get("gameCreation", 0),
+            "game_version": info.get("gameVersion", ""),
             "participants": participants,
+            "blue_team": blue_team,
+            "red_team": red_team,
+            "blue_win": blue_win,
+            "team_objectives": team_objectives,
         }
+    return result
+
+
+def search_players_by_name(game_name, platform=None):
+    """
+    通过游戏名搜索玩家（尝试多个常见标签）
+    返回所有找到的玩家列表
+    """
+    platform = platform or DEFAULT_PLATFORM
+    common_tags = ["KR1", "KR2", "KR3", "CN1", "CN2", "SG2", "NA1", "EUW1", "EUNE1", "JP1", "TW1", "TW2", "VN1", "TH1", "PH1", "ID1"]
+    
+    results = []
+    seen_puuids = set()
+    
+    for tag in common_tags:
+        account = get_account_by_riot_id(game_name, tag)
+        if account.get("success") and account["puuid"] not in seen_puuids:
+            seen_puuids.add(account["puuid"])
+            # 获取召唤师信息
+            summoner = get_summoner_by_puuid(account["puuid"], platform)
+            result = {
+                "account": account,
+                "summoner": summoner if summoner.get("success") else None,
+            }
+            results.append(result)
+    
+    return {"success": True, "players": results, "total": len(results)}
+
+
+def get_league_entries(summoner_id, platform=None):
+    """
+    League-V4: 获取排位段位信息
+    """
+    platform = platform or DEFAULT_PLATFORM
+    base = PLATFORM[platform]
+    url = f"{base}/lol/league/v4/entries/by-summoner/{summoner_id}"
+    result = _get(url)
+    if result["success"]:
+        entries = result["data"]
+        rank_info = {}
+        for entry in entries:
+            queue_type = entry.get("queueType", "")
+            if queue_type == "RANKED_SOLO_5x5":
+                rank_info["solo"] = {
+                    "tier": entry.get("tier", ""),
+                    "division": entry.get("rank", ""),
+                    "leaguePoints": entry.get("leaguePoints", 0),
+                    "wins": entry.get("wins", 0),
+                    "losses": entry.get("losses", 0),
+                    "veteran": entry.get("veteran", False),
+                    "hotStreak": entry.get("hotStreak", False),
+                    "freshBlood": entry.get("freshBlood", False),
+                }
+            elif queue_type == "RANKED_FLEX_SR":
+                rank_info["flex"] = {
+                    "tier": entry.get("tier", ""),
+                    "division": entry.get("rank", ""),
+                    "leaguePoints": entry.get("leaguePoints", 0),
+                    "wins": entry.get("wins", 0),
+                    "losses": entry.get("losses", 0),
+                }
+        return {"success": True, "data": rank_info}
     return result
 
 
 def get_player_full_info(game_name, tag_line, platform=None):
     """
     一站式查询：获取玩家完整信息
-    返回: 账号信息 + 召唤师信息 + 英雄熟练度 + 最近比赛
+    返回: 账号信息 + 召唤师信息 + 排位 + 英雄熟练度 + 最近10场比赛
     """
     platform = platform or DEFAULT_PLATFORM
 
@@ -245,7 +353,7 @@ def get_player_full_info(game_name, tag_line, platform=None):
     summoner = get_summoner_by_puuid(puuid, platform)
     if not summoner.get("success"):
         # 召唤师不在该平台，尝试其他平台
-        for alt_platform in ["sg2", "na1"]:
+        for alt_platform in ["sg2", "na1", "euw1"]:
             if alt_platform == platform:
                 continue
             summoner = get_summoner_by_puuid(puuid, alt_platform)
@@ -253,14 +361,21 @@ def get_player_full_info(game_name, tag_line, platform=None):
                 platform = alt_platform
                 break
 
-    # 3. 获取英雄熟练度
+    # 3. 获取排位段位
+    rank = {}
+    if summoner.get("success") and summoner.get("id"):
+        rank_result = get_league_entries(summoner["id"], platform)
+        if rank_result.get("success"):
+            rank = rank_result["data"]
+
+    # 4. 获取英雄熟练度
     masteries = get_all_champion_masteries(puuid, platform)
 
-    # 4. 获取最近5场比赛
-    match_result = get_match_ids(puuid, count=5)
+    # 5. 获取最近10场比赛
+    match_result = get_match_ids(puuid, count=10)
     matches = []
     if match_result.get("success") and match_result.get("match_ids"):
-        for mid in match_result["match_ids"][:3]:  # 只查3场详情
+        for mid in match_result["match_ids"][:10]:
             detail = get_match_detail(mid)
             if detail.get("success"):
                 matches.append(detail)
@@ -269,6 +384,7 @@ def get_player_full_info(game_name, tag_line, platform=None):
         "success": True,
         "account": account,
         "summoner": summoner if summoner.get("success") else None,
+        "rank": rank,
         "masteries": masteries.get("masteries", []) if masteries.get("success") else [],
         "matches": matches,
     }

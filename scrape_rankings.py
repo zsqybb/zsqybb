@@ -170,17 +170,40 @@ def update_builds_with_rankings(opgg_champions, key_map):
         builds[champ_english_id]['rank'] = parsed['rank']
         builds[champ_english_id]['kda'] = parsed['kda']
         builds[champ_english_id]['main_position'] = parsed['main_position']
-        builds[champ_english_id]['positions'] = parsed['positions']
         
-        # 如果原有roles_cn为空，用OP.GG数据补充
-        if not builds[champ_english_id].get('roles_cn') and parsed['positions']:
+        # 合并位置数据（而非替换）：保留已有的builds/runes/skills/skill_sequence
+        existing_positions = builds[champ_english_id].get('positions', [])
+        existing_pos_map = {p['name']: p for p in existing_positions if isinstance(p, dict) and p.get('name')}
+        new_positions = parsed['positions']
+        merged_positions = []
+        for new_pos in new_positions:
+            pos_name = new_pos.get('name', '')
+            existing = existing_pos_map.get(pos_name)
+            if existing:
+                # 合并：用新统计覆盖，保留已有的builds/runes/skills/skill_sequence
+                merged = dict(new_pos)
+                for key in ['builds', 'runes', 'skills', 'skill_sequence']:
+                    if key in existing and existing[key]:
+                        # 只有在新数据没有或为空时才保留旧数据
+                        if not merged.get(key) or (isinstance(merged[key], dict) and not any(merged[key].values())):
+                            merged[key] = existing[key]
+                merged_positions.append(merged)
+            else:
+                merged_positions.append(new_pos)
+        builds[champ_english_id]['positions'] = merged_positions
+        
+        # 始终用OP.GG分路数据更新roles（之前可能来自Riot tags，不准确）
+        if parsed['positions']:
             roles_cn = []
+            roles_en = []
             for pos in parsed['positions']:
                 cn = position_to_cn(pos['name'])
                 if cn not in roles_cn:
                     roles_cn.append(cn)
+                if pos['name'] not in roles_en:
+                    roles_en.append(pos['name'])
             builds[champ_english_id]['roles_cn'] = roles_cn
-            builds[champ_english_id]['roles'] = [pos['name'] for pos in parsed['positions']]
+            builds[champ_english_id]['roles'] = roles_en
         
         # tier标签
         builds[champ_english_id]['tier_label'] = tier_to_label(parsed['tier'])
