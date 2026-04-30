@@ -9,7 +9,19 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-API_KEY = "RGAPI-d29baf42-9a15-450e-9d1b-1935a08b0b0f"
+# API_KEY 存储为可变变量，支持动态更新
+_API_KEY = "RGAPI-d29baf42-9a15-450e-9d1b-1935a08b0b0f"
+
+def get_api_key():
+    """获取当前API密钥"""
+    global _API_KEY
+    return _API_KEY
+
+def set_api_key(new_key):
+    """动态更新API密钥"""
+    global _API_KEY
+    _API_KEY = new_key
+    logger.info(f"API密钥已更新: {new_key[:10]}...")
 
 # 区域端点配置
 REGIONAL = {
@@ -48,7 +60,7 @@ def _get(url, params=None):
     """发送GET请求，带限速和错误处理"""
     _rate_limit()
     params = params or {}
-    params["api_key"] = API_KEY
+    params["api_key"] = get_api_key()
 
     try:
         resp = requests.get(url, params=params, timeout=15)
@@ -388,21 +400,3 @@ def get_player_full_info(game_name, tag_line, platform=None):
         "masteries": masteries.get("masteries", []) if masteries.get("success") else [],
         "matches": matches,
     }
-
-
-if __name__ == "__main__":
-    # 测试
-    print("=== 测试Riot API ===")
-    result = get_account_by_riot_id("Hide on bush", "KR1")
-    print(f"Account: {result}")
-
-    if result.get("success"):
-        puuid = result["puuid"]
-        summoner = get_summoner_by_puuid(puuid)
-        print(f"Summoner: {summoner}")
-
-        mastery = get_champion_mastery(puuid, 84)
-        print(f"Akali Mastery: {mastery}")
-
-        match_ids = get_match_ids(puuid, count=3)
-        print(f"Match IDs: {match_ids}")

@@ -212,20 +212,21 @@
             <div class="section-grid">
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fas fa-key"></i> API密钥</h3>
+                        <h3><i class="fas fa-key"></i> Riot API密钥</h3>
                     </div>
                     <div class="card-body">
                         <p class="hint-text" style="margin-bottom:12px">
-                            Riot API Key 是访问英雄联盟数据接口的凭证。本程序已内置密钥，无需手动填写。<br>
-                            <strong>注意：</strong>开发密钥每24小时过期，如果查询失败（401错误），说明密钥已过期，需要到 
-                            <a href="https://developer.riotgames.com/" target="_blank" style="color:var(--accent)">Riot开发者平台</a> 
-                            重新获取并替换。生产密钥则长期有效。
+                            Riot API Key 是访问英雄联盟数据接口的凭证。开发密钥每24小时过期，生产密钥长期有效。<br>
+                            密钥过期后，请到 <a href="https://developer.riotgames.com/" target="_blank" style="color:var(--accent)">Riot开发者平台</a> 重新获取。
                         </p>
                         <div class="input-group">
                             <label>Riot API Key</label>
-                            <input type="text" id="apiKeyInput" class="input-field" placeholder="RGAPI-xxxx" disabled>
+                            <input type="text" id="apiKeyInput" class="input-field" placeholder="RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
                         </div>
-                        <button class="btn btn-primary" id="btnTestApi">
+                        <button class="btn btn-primary" id="btnUpdateApiKey">
+                            <i class="fas fa-save"></i> 更新密钥
+                        </button>
+                        <button class="btn btn-outline" id="btnTestApi">
                             <i class="fas fa-vial"></i> 测试API
                         </button>
                         <div id="apiTestResult" class="hint-text"></div>

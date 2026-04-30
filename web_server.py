@@ -754,6 +754,44 @@ def api_ai_chat():
         return jsonify({"success": False, "error": str(e)})
 
 
+@app.route('/api/update-api-key', methods=['POST'])
+def api_update_api_key():
+    """动态更新Riot API密钥（开发密钥每24小时过期）"""
+    try:
+        from riot_api_client import set_api_key, get_api_key
+        
+        data = request.get_json()
+        new_key = data.get('apiKey', '').strip()
+        
+        if not new_key or not new_key.startswith('RGAPI-'):
+            return jsonify({"success": False, "error": "无效的API密钥格式，必须以RGAPI-开头"})
+        
+        set_api_key(new_key)
+        
+        return jsonify({
+            "success": True, 
+            "message": "API密钥更新成功！",
+            "currentKey": get_api_key()[:20] + "..."
+        })
+    except Exception as e:
+        logger.error(f"更新API密钥失败: {e}")
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/get-api-key', methods=['GET'])
+def api_get_api_key():
+    """获取当前API密钥（仅返回前20位）"""
+    try:
+        from riot_api_client import get_api_key
+        key = get_api_key()
+        return jsonify({
+            "success": True,
+            "apiKey": key[:20] + "..."
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
 # ==================== 静态文件（catch-all，放在最后） ====================
 
 @app.route('/<path:filename>')
@@ -772,7 +810,12 @@ if __name__ == '__main__':
 
     print("=" * 50)
     print("  LOL数据助手 - 国服版")
-    print("  访问地址: http://127.0.0.1:5000")
     print("=" * 50)
 
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    # 获取端口（Railway使用PORT环境变量）
+    port = int(os.environ.get('PORT', 5000))
+    
+    # 生产环境关闭debug模式
+    debug = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    
+    app.run(host='0.0.0.0', port=port, debug=debug)

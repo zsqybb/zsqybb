@@ -156,9 +156,11 @@ async function connectLcu() {
     }
 }
 
-document.getElementById('btnLcuConnect').addEventListener('click', connectLcu);
-document.getElementById('btnSettingsLcu').addEventListener('click', connectLcu);
-
+// 浏览器环境才执行，Node.js 自动跳过
+if (typeof document !== 'undefined') {
+  document.getElementById('btnLcuConnect').addEventListener('click', connectLcu);
+  document.getElementById('btnSettingsLcu').addEventListener('click', connectLcu);
+}
 document.getElementById('btnLcuRead').addEventListener('click', async () => {
     showLoading('正在从客户端读取数据...');
     try {
@@ -1293,6 +1295,60 @@ document.getElementById('btnTestApi').addEventListener('click', async () => {
         resultEl.innerHTML = `<span style="color:var(--loss)">❌ 请求失败: ${e.message}</span>`;
     }
 });
+
+// ==================== API 密钥更新 ====================
+
+document.getElementById('btnUpdateApiKey').addEventListener('click', async () => {
+    const apiKey = document.getElementById('apiKeyInput').value.trim();
+    const resultEl = document.getElementById('apiTestResult');
+
+    if (!apiKey) {
+        resultEl.innerHTML = `<span style="color:var(--loss)">❌ 请输入API密钥</span>`;
+        return;
+    }
+
+    if (!apiKey.startsWith('RGAPI-')) {
+        resultEl.innerHTML = `<span style="color:var(--loss)">❌ 无效的API密钥格式，必须以 RGAPI- 开头</span>`;
+        return;
+    }
+
+    resultEl.textContent = '更新中...';
+
+    try {
+        const resp = await fetch('/api/update-api-key', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ apiKey })
+        });
+        const data = await resp.json();
+
+        if (data.success) {
+            resultEl.innerHTML = `<span style="color:var(--win)">✅ ${data.message} 当前密钥: ${data.currentKey}</span>`;
+            notify('API密钥更新成功！页面将自动刷新...', 'success');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } else {
+            resultEl.innerHTML = `<span style="color:var(--loss)">❌ ${data.error}</span>`;
+        }
+    } catch (e) {
+        resultEl.innerHTML = `<span style="color:var(--loss)">❌ 请求失败: ${e.message}</span>`;
+    }
+});
+
+// 页面加载时获取当前密钥
+async function loadCurrentApiKey() {
+    try {
+        const resp = await fetch('/api/get-api-key');
+        const data = await resp.json();
+        if (data.success) {
+            document.getElementById('apiKeyInput').value = '';
+        }
+    } catch (e) {
+        console.log('获取API密钥失败:', e);
+    }
+}
+loadCurrentApiKey();
 
 // ==================== 初始化 ====================
 
