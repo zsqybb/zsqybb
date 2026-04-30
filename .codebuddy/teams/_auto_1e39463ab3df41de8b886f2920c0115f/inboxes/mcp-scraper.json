@@ -1,0 +1,56 @@
+[
+  {
+    "id": "msg-1777433368109-08odv9",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "message",
+    "content": "How's the MCP scraper going? What's the progress?",
+    "timestamp": "2026-04-29T03:29:28.109Z",
+    "read": true
+  },
+  {
+    "id": "msg-1777433527975-7ryzow",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "message",
+    "content": "What's the progress? How many champions have been updated?",
+    "timestamp": "2026-04-29T03:32:07.975Z",
+    "read": true
+  },
+  {
+    "id": "msg-1777433559784-i7mhdv",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "message",
+    "content": "Are you still running? How many champions done?",
+    "timestamp": "2026-04-29T03:32:39.784Z",
+    "read": true
+  },
+  {
+    "id": "msg-1777433648428-ank2tg",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "message",
+    "content": "How far along are you? Report your progress.",
+    "timestamp": "2026-04-29T03:34:08.428Z",
+    "read": true
+  },
+  {
+    "id": "msg-1777433694191-kr8as9",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "message",
+    "content": "Are you still running? Please send me your current status.",
+    "timestamp": "2026-04-29T03:34:54.191Z",
+    "read": true
+  },
+  {
+    "id": "shutdown-1777434484696",
+    "from": "team-lead",
+    "to": "mcp-scraper",
+    "type": "shutdown_request",
+    "content": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-1777434484696\",\"reason\":\"Scraper work done, shutting down\",\"from\":\"team-lead\",\"timestamp\":\"2026-04-29T03:48:04.696Z\"}",
+    "timestamp": "2026-04-29T03:48:04.696Z",
+    "read": true
+  }
+]

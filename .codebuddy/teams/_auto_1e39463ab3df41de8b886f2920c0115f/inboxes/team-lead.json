@@ -1,0 +1,20 @@
+[
+  {
+    "id": "msg-1777434221153-bqb0zu",
+    "from": "mcp-scraper",
+    "to": "team-lead",
+    "type": "message",
+    "content": "OP.GG MCP scraper completed. Results:\n\n- Ran for ~17 minutes (11:26 to 11:43)\n- Processed all 159 champions\n- Successfully fetched position data for 172 champions from OP.GG\n- **227 errors** across all champions — every single build fetch failed with the same error: `'list' object has no attribute 'get'`\n\nThis error indicates the API response format has changed. The scraper expects dict objects (with `.get()` method) but is receiving lists instead. The position discovery step works fine, but the build detail fetching (runes, items, skill order, etc.) all fail due to this data structure mismatch.\n\n- Output saved to: `F:\\code-tengxun\\static\\champion_builds.json`\n- The file likely contains champions with position info but no actual build data (runes, items, skills)\n\nThe scraper needs a code fix to handle the new API response format before it can successfully fetch build data.",
+    "timestamp": "2026-04-29T03:43:41.153Z",
+    "read": true
+  },
+  {
+    "id": "resp-1777434490587-9hq4k4",
+    "from": "mcp-scraper",
+    "to": "team-lead",
+    "type": "shutdown_response",
+    "content": "{\"type\":\"shutdown_response\",\"request_id\":\"shutdown-1777434484696\",\"approve\":true,\"from\":\"mcp-scraper\",\"timestamp\":\"2026-04-29T03:48:10.587Z\"}",
+    "timestamp": "2026-04-29T03:48:10.587Z",
+    "read": true
+  }
+]
